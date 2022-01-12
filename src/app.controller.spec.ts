@@ -15,8 +15,12 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it('should return the version of the project', () => {
+      /* it doesn't make much sense to test for the exact version since it's goin to
+        change with each time I make an update, the point is this route should return something
+        to test accurately I would have to repeat the same code here that I use in the service
+       */
+      expect(appController.getVersion()).toBeDefined();
     });
   });
 });
