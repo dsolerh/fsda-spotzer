@@ -1,0 +1,17 @@
+# docker-compose.yml
+version: '3.1'
+
+services:
+  postgres:
+    image: postgres
+    container_name: pgdbs-spotzer
+    ports:
+      - 5432:5432
+    env_file:
+      - database.env # configures postgress
+    # volumes:
+    #   - ~/src/docker_vol/postgres-db:/var/lib/postgresql
+
+# volumes:
+#   postgres:
+#     driver: local
