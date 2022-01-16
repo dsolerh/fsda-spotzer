@@ -32,6 +32,10 @@ export class ProductOrdersService {
     return order;
   }
 
+  async getAll(): Promise<OrderEntity[]> {
+    return this.repo.find();
+  }
+
   private async validateDto(rawDto: any): Promise<CreateOrderDto> {
     const dto = plainToClass(CreateOrderDto, rawDto);
     await validateOrReject(dto);

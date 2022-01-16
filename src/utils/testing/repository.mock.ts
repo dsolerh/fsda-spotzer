@@ -1,13 +1,18 @@
 import { ICommonRepository } from 'src/common/interfaces/common-repository.interface';
+import { FindManyOptions } from 'typeorm';
 import { CreateOrderDto } from '../../modules/product-orders/dto/create-order.dto';
 import { OrderEntity } from '../../modules/product-orders/entity/order.entity';
 
 class RepositoryMock implements ICommonRepository<OrderEntity, CreateOrderDto> {
-  public static data: OrderEntity[] = [];
+  public data: OrderEntity[] = [];
+
+  async find(options?: FindManyOptions<any>): Promise<OrderEntity[]> {
+    return this.data;
+  }
 
   async transactionalCreate(dto: CreateOrderDto): Promise<OrderEntity> {
     const record = new OrderEntity(dto);
-    RepositoryMock.data.push(record);
+    this.data.push(record);
     return record;
   }
 }
@@ -20,10 +25,10 @@ export class RepositoryMockBuilder {
   }
 
   public get data(): OrderEntity[] {
-    return RepositoryMock.data;
+    return this.repoMock.data;
   }
 
   clearRepo() {
-    RepositoryMock.data = [];
+    this.repoMock.data = [];
   }
 }

@@ -8,13 +8,13 @@ import { ProductOrdersService } from './product-orders.service';
 describe('ProductOrdersController Unit Test:', () => {
   let controller: ProductOrdersController;
   let spyService: ProductOrdersService;
-  const examples = {};
 
   beforeEach(async () => {
     const ApiServiceProvider = {
       provide: ProductOrdersService,
       useFactory: () => ({
         create: jest.fn(() => ({})),
+        getAll: jest.fn(() => ({})),
       }),
     };
     const module: TestingModule = await Test.createTestingModule({
@@ -24,12 +24,6 @@ describe('ProductOrdersController Unit Test:', () => {
 
     controller = module.get<ProductOrdersController>(ProductOrdersController);
     spyService = module.get<ProductOrdersService>(ProductOrdersService);
-
-    examples['valid'] = JSON.parse(
-      await readFile(path.resolve('', 'assets', 'valid-orders.json')).then(
-        (buff) => buff.toString(),
-      ),
-    );
   });
 
   it('should be defined', () => {
@@ -46,5 +40,10 @@ describe('ProductOrdersController Unit Test:', () => {
     controller.createOrder(dto);
     expect(spyService.create).toHaveBeenCalled();
     expect(spyService.create).toHaveBeenCalledWith(dto);
+  });
+
+  it('should call getAll from ProductOrdersService', () => {
+    controller.getAll();
+    expect(spyService.getAll).toHaveBeenCalled();
   });
 });
