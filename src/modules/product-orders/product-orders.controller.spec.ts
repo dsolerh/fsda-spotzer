@@ -1,4 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { readFile } from 'fs/promises';
+import * as path from 'path';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { ProductOrdersController } from './product-orders.controller';
 import { ProductOrdersService } from './product-orders.service';
@@ -6,6 +8,7 @@ import { ProductOrdersService } from './product-orders.service';
 describe('ProductOrdersController Unit Test:', () => {
   let controller: ProductOrdersController;
   let spyService: ProductOrdersService;
+  const examples = {};
 
   beforeEach(async () => {
     const ApiServiceProvider = {
@@ -21,6 +24,12 @@ describe('ProductOrdersController Unit Test:', () => {
 
     controller = module.get<ProductOrdersController>(ProductOrdersController);
     spyService = module.get<ProductOrdersService>(ProductOrdersService);
+
+    examples['valid'] = JSON.parse(
+      await readFile(path.resolve('', 'assets', 'valid-orders.json')).then(
+        (buff) => buff.toString(),
+      ),
+    );
   });
 
   it('should be defined', () => {
