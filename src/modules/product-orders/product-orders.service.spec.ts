@@ -1,13 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { readFile } from 'fs/promises';
-import * as path from 'path';
-// import * as sinon from 'sinon';
 import { RepositoryMockBuilder } from '../../utils/testing/repository.mock';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { ProductOrdersService } from './product-orders.service';
 import { OrderRepository } from './entity/order.repository';
 import { ProductOrdersServiceMockBuilder } from '../../utils/testing/service.mock';
 import { OrderEntity } from './entity/order.entity';
+import { ProductTypeEnum } from './constants/product-type.enum';
 
 describe("ProductOrdersService [Testing the proper method's arg]", () => {
   let service: ProductOrdersService;
@@ -37,10 +35,9 @@ describe("ProductOrdersService [Testing the proper method's arg]", () => {
  * this tests are ment to ensure proper validation of the information
  * that is recived by the service
  */
-describe('ProductOrdersService [Test the validation process]', () => {
+describe('ProductOrdersService [Test the repo]', () => {
   let service: ProductOrdersService;
   let sandbox: RepositoryMockBuilder;
-  const examples = {};
 
   beforeAll(async () => {
     sandbox = new RepositoryMockBuilder();
@@ -56,31 +53,56 @@ describe('ProductOrdersService [Test the validation process]', () => {
     }).compile();
 
     service = module.get<ProductOrdersService>(ProductOrdersService);
-
-    examples['valid'] = JSON.parse(
-      await readFile(path.resolve('', 'assets', 'valid-orders.json')).then(
-        (buff) => buff.toString(),
-      ),
-    );
   });
 
   /**
    * if the argument are right the service sould call the repo and persist the data
    * and then return an instance of the entity
    */
-  it('should return a value', async () => {
-    for (const valid of examples['valid']) {
-      const result = await service.create(valid);
-      expect(result).toBeDefined();
-      expect(result).toBeInstanceOf(OrderEntity);
-    }
-  });
+  it('should create a new record', async () => {
+    const dto = {
+      Partner: 'Partner A',
+      OrderID: 'sample string 7',
+      TypeOfOrder: 'sample string 8',
+      SubmittedBy: 'sample string 11',
+      CompanyID: 'sample string 28',
+      CompanyName: 'sample string 29',
+      LineItems: [
+        {
+          ID: 1,
+          ProductID: '127',
+          ProductType: ProductTypeEnum.WEBSITE,
+          Notes: 'sample string 53',
+          Category: 'sample string 245',
+          WebsiteDetails: {
+            TemplateId: 'sample string 245',
+            WebsiteBusinessName: 'sample string 245',
+            WebsiteAddressLine1: 'sample string 246',
+            WebsiteAddressLine2: 'sample string 247',
+            WebsiteCity: 'sample string 248',
+            WebsiteState: 'sample string 249',
+            WebsitePostCode: 'sample string 250',
+            WebsitePhone: 'sample string 257',
+            WebsiteEmail: 'sample string 258',
+            WebsiteMobile: 'sample string 259',
+          },
+        },
+      ],
 
-  /**
-   * if the argument is not valid it should thow an error
-   */
-  it('should throw BadRequestError', () => {
-    expect(null).toBe(null);
+      ExtraInfo: {
+        __type: 'PA',
+        ContactFirstName: 'Sample name',
+        ContactLastName: 'Sample',
+        ContactTitle: 'Sample',
+        ContactPhone: 'Sample',
+        ContactMobile: 'Sample',
+        ContactEmail: 'Sample',
+      },
+    };
+    const result = await service.create(new CreateOrderDto(dto));
+    expect(result).toBeDefined();
+    expect(result).toBeInstanceOf(OrderEntity);
+    expect(sandbox.data).toContain(result);
   });
 
   afterAll(async () => {
