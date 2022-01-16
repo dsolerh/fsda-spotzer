@@ -1,15 +1,12 @@
+import { ICommonRepository } from 'src/common/interfaces/common-repository.interface';
 import { CreateOrderDto } from '../../modules/product-orders/dto/create-order.dto';
 import { OrderEntity } from '../../modules/product-orders/entity/order.entity';
 
-class RepositoryMock {
+class RepositoryMock implements ICommonRepository<OrderEntity, CreateOrderDto> {
   public static data: OrderEntity[] = [];
-  async create(dto: CreateOrderDto): Promise<OrderEntity> {
-    const record = new OrderEntity();
-    for (const key in dto) {
-      if (Object.prototype.hasOwnProperty.call(dto, key)) {
-        record[key] = dto[key];
-      }
-    }
+
+  async transactionalCreate(dto: CreateOrderDto): Promise<OrderEntity> {
+    const record = new OrderEntity(dto);
     RepositoryMock.data.push(record);
     return record;
   }
@@ -20,6 +17,10 @@ export class RepositoryMockBuilder {
 
   getRepo(): RepositoryMock {
     return this.repoMock;
+  }
+
+  public get data(): OrderEntity[] {
+    return RepositoryMock.data;
   }
 
   clearRepo() {
