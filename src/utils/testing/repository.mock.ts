@@ -6,6 +6,10 @@ import { OrderEntity } from '../../modules/product-orders/entity/order.entity';
 class RepositoryMock implements ICommonRepository<OrderEntity, CreateOrderDto> {
   public data: OrderEntity[] = [];
 
+  async findOne(id: string | number | Date): Promise<OrderEntity> {
+    return this.data[0];
+  }
+
   async find(options?: FindManyOptions<any>): Promise<OrderEntity[]> {
     return this.data;
   }
