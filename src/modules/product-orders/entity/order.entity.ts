@@ -1,6 +1,7 @@
 import { Column, Entity, OneToMany } from 'typeorm';
 import { CommonEntity } from '../../../common/models/common.entity';
 import {
+  NoInfo,
   PartnerAInfo,
   PartnerCInfo,
 } from '../validation/types/Partners/partners-info';
@@ -25,5 +26,5 @@ export class OrderEntity extends CommonEntity {
   LineItems: ProductEntity[];
 
   @Column({ type: 'simple-json', nullable: true })
-  ExtraInfo: PartnerCInfo | PartnerAInfo;
+  ExtraInfo: PartnerCInfo | PartnerAInfo | NoInfo;
 }

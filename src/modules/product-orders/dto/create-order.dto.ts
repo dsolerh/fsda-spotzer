@@ -5,14 +5,17 @@ import {
   IsNotEmpty,
   IsOptional,
   IsString,
+  Validate,
   ValidateNested,
 } from 'class-validator';
 import { Product } from '../validation/types/product.type';
 import { OrderEntity } from '../entity/order.entity';
 import {
+  NoInfo,
   PartnerAInfo,
   PartnerCInfo,
 } from '../validation/types/Partners/partners-info';
+import { CantBeInstanceOf } from '../validation/utils/validate-instance-of';
 
 export class CreateOrderDto extends OrderEntity {
   @IsString()
@@ -40,7 +43,7 @@ export class CreateOrderDto extends OrderEntity {
   @ValidateNested()
   LineItems: Product[];
 
-  @Type(() => null, {
+  @Type(() => NoInfo, {
     discriminator: {
       property: '__type',
       subTypes: [
@@ -49,7 +52,8 @@ export class CreateOrderDto extends OrderEntity {
       ],
     },
   })
+  @Validate(CantBeInstanceOf, [NoInfo])
   @IsOptional()
   @ValidateNested()
-  ExtraInfo: PartnerCInfo | PartnerAInfo;
+  ExtraInfo: PartnerCInfo | PartnerAInfo | NoInfo;
 }
