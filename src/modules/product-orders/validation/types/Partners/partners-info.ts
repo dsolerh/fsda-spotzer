@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsBoolean, IsNotEmpty, IsString } from 'class-validator';
 
 export class PartnerAInfo {
   @IsString()
@@ -32,3 +32,5 @@ export class PartnerCInfo {
   @IsNotEmpty()
   RelatedOrder: string;
 }
+
+export class NoInfo {}
