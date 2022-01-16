@@ -65,7 +65,7 @@ class ConfigService {
       },
       ssl: this.isProduction(),
       synchronize: !this.isProduction(),
-      // dropSchema: !this.isProduction(),
+      dropSchema: !this.isProduction(),
       logging: !this.isProduction(),
     };
   }
