@@ -1,0 +1,336 @@
+[
+  [
+    {
+      "failureReason": "the Partner info is missing"
+    },
+    {
+      "OrderID": "sample string 7",
+      "TypeOfOrder": "sample string 8",
+      "SubmittedBy": "sample string 11",
+      "CompanyID": "sample string 28",
+      "CompanyName": "sample string 29",
+      "LineItems": [
+        {
+          "ID": 1,
+          "ProductID": "6789",
+          "ProductType": "Website",
+          "Notes": "sample string 53",
+          "Category": "sample string 245",
+          "WebsiteDetails": {
+            "TemplateId": "sample string 245",
+            "WebsiteBusinessName": "sample string 245",
+            "WebsiteAddressLine1": "sample string 246",
+            "WebsiteAddressLine2": "sample string 247",
+            "WebsiteCity": "sample string 248",
+            "WebsiteState": "sample string 249",
+            "WebsitePostCode": "sample string 250",
+            "WebsitePhone": "sample string 257",
+            "WebsiteEmail": "sample string 258",
+            "WebsiteMobile": "sample string 259"
+          }
+        },
+        {
+          "ID": 1,
+          "ProductID": "6789",
+          "ProductType": "Paid Search",
+          "Notes": "sample string 53",
+          "Category": "sample string 245",
+          "AdWordCampaign": {
+            "CampaignName": "sample string 1",
+            "CampaignAddressLine1": "sample string 2",
+            "CampaignPostCode": "sample string 6",
+            "CampaignRadius": "sample string 13",
+            "LeadPhoneNumber": "sample string 14",
+            "SMSPhoneNumber": "sample string 15",
+            "UniqueSellingPoint1": "sample string 18",
+            "UniqueSellingPoint2": "sample string 19",
+            "UniqueSellingPoint3": "sample string 20",
+            "Offer": "sample string 21",
+            "DestinationURL": "sample string 23"
+          }
+        }
+      ]
+    },
+    [
+      {
+        "property": "Partner"
+      }
+    ]
+  ],
+  [
+    {
+      "failureReason": "the ProductID info is missing"
+    },
+    {
+      "OrderID": "sample string 7",
+      "Partner": "Partner D",
+      "TypeOfOrder": "sample string 8",
+      "SubmittedBy": "sample string 11",
+      "CompanyID": "sample string 28",
+      "CompanyName": "sample string 29",
+      "LineItems": [
+        {
+          "ID": 1,
+          "ProductType": "Website",
+          "Notes": "sample string 53",
+          "Category": "sample string 245",
+          "WebsiteDetails": {
+            "TemplateId": "sample string 245",
+            "WebsiteBusinessName": "sample string 245",
+            "WebsiteAddressLine1": "sample string 246",
+            "WebsiteAddressLine2": "sample string 247",
+            "WebsiteCity": "sample string 248",
+            "WebsiteState": "sample string 249",
+            "WebsitePostCode": "sample string 250",
+            "WebsitePhone": "sample string 257",
+            "WebsiteEmail": "sample string 258",
+            "WebsiteMobile": "sample string 259"
+          }
+        },
+        {
+          "ID": 1,
+          "ProductID": "6789",
+          "ProductType": "Paid Search",
+          "Notes": "sample string 53",
+          "Category": "sample string 245",
+          "AdWordCampaign": {
+            "CampaignName": "sample string 1",
+            "CampaignAddressLine1": "sample string 2",
+            "CampaignPostCode": "sample string 6",
+            "CampaignRadius": "sample string 13",
+            "LeadPhoneNumber": "sample string 14",
+            "SMSPhoneNumber": "sample string 15",
+            "UniqueSellingPoint1": "sample string 18",
+            "UniqueSellingPoint2": "sample string 19",
+            "UniqueSellingPoint3": "sample string 20",
+            "Offer": "sample string 21",
+            "DestinationURL": "sample string 23"
+          }
+        }
+      ]
+    },
+    [
+      {
+        "property": "LineItems",
+        "children": [
+          {
+            "property": "0",
+            "children": [
+              {
+                "property": "ProductID"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  ],
+  [
+    {
+      "failureReason": "the Notes and ProductType came with wrong types"
+    },
+    {
+      "Partner": "Partner D",
+      "OrderID": "sample string 7",
+      "TypeOfOrder": "sample string 8",
+      "SubmittedBy": "sample string 11",
+      "CompanyID": "sample string 28",
+      "CompanyName": "sample string 29",
+      "LineItems": [
+        {
+          "ID": 1,
+          "ProductID": "127",
+          "ProductType": "Website",
+          "Notes": 122,
+          "Category": "sample string 245",
+          "WebsiteDetails": {
+            "TemplateId": "sample string 245",
+            "WebsiteBusinessName": "sample string 245",
+            "WebsiteAddressLine1": "sample string 246",
+            "WebsiteAddressLine2": "sample string 247",
+            "WebsiteCity": "sample string 248",
+            "WebsiteState": "sample string 249",
+            "WebsitePostCode": "sample string 250",
+            "WebsitePhone": "sample string 257",
+            "WebsiteEmail": "sample string 258",
+            "WebsiteMobile": "sample string 259"
+          }
+        },
+        {
+          "ID": 1,
+          "ProductID": "6789",
+          "ProductType": "Paid",
+          "Notes": "sample string 53",
+          "Category": "sample string 245",
+          "AdWordCampaign": {
+            "CampaignName": "sample string 1",
+            "CampaignAddressLine1": "sample string 2",
+            "CampaignPostCode": "sample string 6",
+            "CampaignRadius": "sample string 13",
+            "LeadPhoneNumber": "sample string 14",
+            "SMSPhoneNumber": "sample string 15",
+            "UniqueSellingPoint1": "sample string 18",
+            "UniqueSellingPoint2": "sample string 19",
+            "UniqueSellingPoint3": "sample string 20",
+            "Offer": "sample string 21",
+            "DestinationURL": "sample string 23"
+          }
+        }
+      ]
+    },
+    [
+      {
+        "property": "LineItems",
+        "children": [
+          {
+            "property": "0",
+            "children": [
+              {
+                "property": "Notes"
+              },
+              {
+                "property": "ProductType"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  ],
+  [
+    {
+      "failureReason": "the product type is not compatible whit the info it gets"
+    },
+    {
+      "Partner": "Partner B",
+      "OrderID": "sample string 7",
+      "TypeOfOrder": "sample string 8",
+      "SubmittedBy": "sample string 11",
+      "CompanyID": "sample string 28",
+      "CompanyName": "sample string 29",
+      "LineItems": [
+        {
+          "ID": 1,
+          "ProductID": "127",
+          "ProductType": "Paid Search",
+          "Notes": "sample string 53",
+          "Category": "sample string 245",
+          "WebsiteDetails": {
+            "TemplateId": "sample string 245",
+            "WebsiteBusinessName": "sample string 245",
+            "WebsiteAddressLine1": "sample string 246",
+            "WebsiteAddressLine2": "sample string 247",
+            "WebsiteCity": "sample string 248",
+            "WebsiteState": "sample string 249",
+            "WebsitePostCode": "sample string 250",
+            "WebsitePhone": "sample string 257",
+            "WebsiteEmail": "sample string 258",
+            "WebsiteMobile": "sample string 259"
+          }
+        }
+      ]
+    },
+    [
+      {
+        "property": "LineItems",
+        "children": [
+          {
+            "property": "0",
+            "children": [
+              {
+                "property": "AdWordCampaign"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  ],
+  [
+    {
+      "failureReason": "the Extra info is not correct"
+    },
+    {
+      "Partner": "Partner C",
+      "OrderID": "sample string 7",
+      "TypeOfOrder": "sample string 8",
+      "SubmittedBy": "sample string 11",
+      "CompanyID": "sample string 28",
+      "CompanyName": "sample string 29",
+      "LineItems": [
+        {
+          "ID": 1,
+          "ProductID": "127",
+          "ProductType": "Website",
+          "Notes": "sample string 53",
+          "Category": "sample string 245",
+          "WebsiteDetails": {
+            "TemplateId": "sample string 245",
+            "WebsiteBusinessName": "sample string 245",
+            "WebsiteAddressLine1": "sample string 246",
+            "WebsiteAddressLine2": "sample string 247",
+            "WebsiteCity": "sample string 248",
+            "WebsiteState": "sample string 249",
+            "WebsitePostCode": "sample string 250",
+            "WebsitePhone": "sample string 257",
+            "WebsiteEmail": "sample string 258",
+            "WebsiteMobile": "sample string 259"
+          }
+        }
+      ],
+      "ExtraInfo": {
+        "__type": "PC",
+        "ExposureID": "Sample",
+        "UDAC": "Sample",
+        "RelatedOrder": ""
+      }
+    },
+    [
+      {
+        "property": "ExtraInfo",
+        "children": [
+          {
+            "property": "RelatedOrder"
+          }
+        ]
+      }
+    ]
+  ],
+  [
+    {
+      "failureReason": "the LineItems are empty"
+    },
+    {
+      "Partner": "Partner C",
+      "OrderID": "sample string 7",
+      "TypeOfOrder": "sample string 8",
+      "SubmittedBy": "sample string 11",
+      "CompanyID": "sample string 28",
+      "CompanyName": "sample string 29",
+      "LineItems": []
+    },
+    [
+      {
+        "property": "LineItems"
+      }
+    ]
+  ],
+  [
+    {
+      "failureReason": "the LineItems are not defined"
+    },
+    {
+      "Partner": "Partner C",
+      "OrderID": "sample string 7",
+      "TypeOfOrder": "sample string 8",
+      "SubmittedBy": "sample string 11",
+      "CompanyID": "sample string 28",
+      "CompanyName": "sample string 29"
+    },
+    [
+      {
+        "property": "LineItems"
+      }
+    ]
+  ]
+]
