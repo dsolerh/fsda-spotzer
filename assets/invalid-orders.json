@@ -332,5 +332,50 @@
         "property": "LineItems"
       }
     ]
+  ],
+  [
+    {
+      "failureReason": "the Extra info is not known"
+    },
+    {
+      "Partner": "Partner C",
+      "OrderID": "sample string 7",
+      "TypeOfOrder": "sample string 8",
+      "SubmittedBy": "sample string 11",
+      "CompanyID": "sample string 28",
+      "CompanyName": "sample string 29",
+      "LineItems": [
+        {
+          "ID": 1,
+          "ProductID": "127",
+          "ProductType": "Website",
+          "Notes": "sample string 53",
+          "Category": "sample string 245",
+          "WebsiteDetails": {
+            "TemplateId": "sample string 245",
+            "WebsiteBusinessName": "sample string 245",
+            "WebsiteAddressLine1": "sample string 246",
+            "WebsiteAddressLine2": "sample string 247",
+            "WebsiteCity": "sample string 248",
+            "WebsiteState": "sample string 249",
+            "WebsitePostCode": "sample string 250",
+            "WebsitePhone": "sample string 257",
+            "WebsiteEmail": "sample string 258",
+            "WebsiteMobile": "sample string 259"
+          }
+        }
+      ],
+      "ExtraInfo": {
+        "__type": "AD",
+        "ExposureID": "Sample",
+        "UDAC": "Sample",
+        "RelatedOrder": "sdas"
+      }
+    },
+    [
+      {
+        "property": "ExtraInfo"
+      }
+    ]
   ]
 ]
