@@ -106,6 +106,125 @@ describe('ProductOrdersService [Test the repo]', () => {
   });
 
   it('sould return all records', async () => {
+    const dtos = [
+      {
+        Partner: 'Partner A',
+        OrderID: 'sample string 7',
+        TypeOfOrder: 'sample string 8',
+        SubmittedBy: 'sample string 11',
+        CompanyID: 'sample string 28',
+        CompanyName: 'sample string 29',
+        LineItems: [
+          {
+            ID: 1,
+            ProductID: '127',
+            ProductType: ProductTypeEnum.WEBSITE,
+            Notes: 'sample string 53',
+            Category: 'sample string 245',
+            WebsiteDetails: {
+              TemplateId: 'sample string 245',
+              WebsiteBusinessName: 'sample string 245',
+              WebsiteAddressLine1: 'sample string 246',
+              WebsiteAddressLine2: 'sample string 247',
+              WebsiteCity: 'sample string 248',
+              WebsiteState: 'sample string 249',
+              WebsitePostCode: 'sample string 250',
+              WebsitePhone: 'sample string 257',
+              WebsiteEmail: 'sample string 258',
+              WebsiteMobile: 'sample string 259',
+            },
+          },
+        ],
+
+        ExtraInfo: {
+          __type: 'PA',
+          ContactFirstName: 'Sample name',
+          ContactLastName: 'Sample',
+          ContactTitle: 'Sample',
+          ContactPhone: 'Sample',
+          ContactMobile: 'Sample',
+          ContactEmail: 'Sample',
+        },
+      },
+      {
+        Partner: 'Partner A',
+        OrderID: 'sample string 7',
+        TypeOfOrder: 'sample string 8',
+        SubmittedBy: 'sample string 11',
+        CompanyID: 'sample string 28',
+        CompanyName: 'sample string 29',
+        LineItems: [
+          {
+            ID: 1,
+            ProductID: '127',
+            ProductType: ProductTypeEnum.WEBSITE,
+            Notes: 'sample string 53',
+            Category: 'sample string 245',
+            WebsiteDetails: {
+              TemplateId: 'sample string 245',
+              WebsiteBusinessName: 'sample string 245',
+              WebsiteAddressLine1: 'sample string 246',
+              WebsiteAddressLine2: 'sample string 247',
+              WebsiteCity: 'sample string 248',
+              WebsiteState: 'sample string 249',
+              WebsitePostCode: 'sample string 250',
+              WebsitePhone: 'sample string 257',
+              WebsiteEmail: 'sample string 258',
+              WebsiteMobile: 'sample string 259',
+            },
+          },
+        ],
+
+        ExtraInfo: {
+          __type: 'PA',
+          ContactFirstName: 'Sample name',
+          ContactLastName: 'Sample',
+          ContactTitle: 'Sample',
+          ContactPhone: 'Sample',
+          ContactMobile: 'Sample',
+          ContactEmail: 'Sample',
+        },
+      },
+      {
+        Partner: 'Partner A',
+        OrderID: 'sample string 7',
+        TypeOfOrder: 'sample string 8',
+        SubmittedBy: 'sample string 11',
+        CompanyID: 'sample string 28',
+        CompanyName: 'sample string 29',
+        LineItems: [
+          {
+            ID: 1,
+            ProductID: '127',
+            ProductType: ProductTypeEnum.WEBSITE,
+            Notes: 'sample string 53',
+            Category: 'sample string 245',
+            WebsiteDetails: {
+              TemplateId: 'sample string 245',
+              WebsiteBusinessName: 'sample string 245',
+              WebsiteAddressLine1: 'sample string 246',
+              WebsiteAddressLine2: 'sample string 247',
+              WebsiteCity: 'sample string 248',
+              WebsiteState: 'sample string 249',
+              WebsitePostCode: 'sample string 250',
+              WebsitePhone: 'sample string 257',
+              WebsiteEmail: 'sample string 258',
+              WebsiteMobile: 'sample string 259',
+            },
+          },
+        ],
+      },
+    ];
+    for (const dto of dtos) {
+      await service.create(new CreateOrderDto(dto));
+    }
+
+    const result = await service.getAll();
+    expect(result).toBeDefined();
+    expect(result.length).toEqual(3);
+  });
+
+  it('sould return one record', async () => {
     const dto = {
       Partner: 'Partner A',
       OrderID: 'sample string 7',
