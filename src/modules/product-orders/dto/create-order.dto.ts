@@ -1,21 +1,55 @@
-import { IsEmpty, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import {
+  ArrayNotEmpty,
+  IsArray,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
+import { Product } from '../validation/types/product.type';
 import { OrderEntity } from '../entity/order.entity';
+import {
+  PartnerAInfo,
+  PartnerCInfo,
+} from '../validation/types/Partners/partners-info';
 
 export class CreateOrderDto extends OrderEntity {
-  @IsEmpty()
-  public OrderId: number;
   @IsString()
   @IsNotEmpty()
-  public Partner: string;
+  OrderID: string;
   @IsString()
   @IsNotEmpty()
-  public TypeOfOrder: string;
+  Partner: string;
   @IsString()
   @IsNotEmpty()
-  public SubmittedBy: string;
-  @IsNumber()
-  public CompanyID: number;
+  TypeOfOrder: string;
   @IsString()
   @IsNotEmpty()
-  public CompanyName: string;
+  SubmittedBy: string;
+  @IsString()
+  @IsNotEmpty()
+  CompanyID: string;
+  @IsString()
+  @IsNotEmpty()
+  CompanyName: string;
+
+  @Type(() => Product)
+  @IsArray()
+  @ArrayNotEmpty()
+  @ValidateNested()
+  LineItems: Product[];
+
+  @Type(() => null, {
+    discriminator: {
+      property: '__type',
+      subTypes: [
+        { value: PartnerAInfo, name: 'PA' },
+        { value: PartnerCInfo, name: 'PC' },
+      ],
+    },
+  })
+  @IsOptional()
+  @ValidateNested()
+  ExtraInfo: PartnerCInfo | PartnerAInfo;
 }
