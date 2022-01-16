@@ -1,20 +1,29 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 import { CommonEntity } from '../../../common/models/common.entity';
+import {
+  PartnerAInfo,
+  PartnerCInfo,
+} from '../validation/types/Partners/partners-info';
+import { ProductEntity } from './product.entity';
 
 @Entity()
 export class OrderEntity extends CommonEntity {
-  @PrimaryGeneratedColumn({
-    comment: 'this is the Primary Column for this table',
-  })
-  public OrderId: number;
   @Column()
-  public Partner: string;
+  OrderID: string;
   @Column()
-  public TypeOfOrder: string;
+  Partner: string;
   @Column()
-  public SubmittedBy: string;
+  TypeOfOrder: string;
   @Column()
-  public CompanyID: number;
+  SubmittedBy: string;
   @Column()
-  public CompanyName: string;
+  CompanyID: string;
+  @Column()
+  CompanyName: string;
+
+  @OneToMany(() => ProductEntity, (p) => p.Order, { eager: true })
+  LineItems: ProductEntity[];
+
+  @Column({ type: 'simple-json', nullable: true })
+  ExtraInfo: PartnerCInfo | PartnerAInfo;
 }
