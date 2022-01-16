@@ -4,8 +4,8 @@ import { validate } from 'class-validator';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import { DeepPartial } from 'typeorm';
-import { combine } from '../../../utils/helpers/combine';
-import { CreateOrderDto } from '../dto/create-order.dto';
+import { combine } from '../../utils/helpers/combine';
+import { CreateOrderDto } from './dto/create-order.dto';
 
 describe('Validation of the data', () => {
   const examples = {};
