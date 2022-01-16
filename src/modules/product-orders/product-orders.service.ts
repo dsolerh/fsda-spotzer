@@ -36,6 +36,10 @@ export class ProductOrdersService {
     return this.repo.find();
   }
 
+  async getOneById(id: number) {
+    return this.repo.findOne(id);
+  }
+
   private async validateDto(rawDto: any): Promise<CreateOrderDto> {
     const dto = plainToClass(CreateOrderDto, rawDto);
     await validateOrReject(dto);

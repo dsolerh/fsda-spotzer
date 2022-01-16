@@ -264,13 +264,16 @@ describe('ProductOrdersService [Test the repo]', () => {
         ContactEmail: 'Sample',
       },
     };
-    await service.create(new CreateOrderDto(dto));
-    await service.create(new CreateOrderDto(dto));
-    await service.create(new CreateOrderDto(dto));
+    const expected = await service.create(new CreateOrderDto(dto));
 
-    const result = await service.getAll();
+    const result = await service.getOneById(1);
     expect(result).toBeDefined();
-    expect(result.length).toEqual(3);
+    expect(result).toEqual(expected);
+  });
+
+  it('sould return undefined', async () => {
+    const result = await service.getOneById(1);
+    expect(result).toBeUndefined();
   });
 
   afterEach(async () => {

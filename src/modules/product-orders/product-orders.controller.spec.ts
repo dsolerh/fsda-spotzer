@@ -1,6 +1,4 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { readFile } from 'fs/promises';
-import * as path from 'path';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { ProductOrdersController } from './product-orders.controller';
 import { ProductOrdersService } from './product-orders.service';
@@ -15,6 +13,7 @@ describe('ProductOrdersController Unit Test:', () => {
       useFactory: () => ({
         create: jest.fn(() => ({})),
         getAll: jest.fn(() => ({})),
+        getOneById: jest.fn(() => ({})),
       }),
     };
     const module: TestingModule = await Test.createTestingModule({
@@ -45,5 +44,10 @@ describe('ProductOrdersController Unit Test:', () => {
   it('should call getAll from ProductOrdersService', () => {
     controller.getAll();
     expect(spyService.getAll).toHaveBeenCalled();
+  });
+
+  it('should call getOneById from ProductOrdersService', () => {
+    controller.getOneById(1);
+    expect(spyService.getOneById).toHaveBeenCalled();
   });
 });
