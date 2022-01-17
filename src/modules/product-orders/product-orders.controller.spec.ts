@@ -29,9 +29,10 @@ describe('ProductOrdersController Unit Test:', () => {
     expect(controller).toBeDefined();
   });
 
-  it('should create something', () => {
+  it('should create something', async () => {
     const dto = new CreateOrderDto();
-    expect(controller.createOrder(dto)).not.toEqual(null);
+    const result = await controller.createOrder(dto);
+    expect(result).not.toEqual(null);
   });
 
   it('should call create from ProductOrdersService', () => {
